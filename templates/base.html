@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,10 +9,22 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0">
     <title>Delivery App</title>
+    <!-- All CSS Files -->
+    {% include 'partials/style.html' %}
 </head>
 
 <body>
     <h1>home page</h1>
+
+
+    {% block content %}
+    {% endblock content %}
+
+    <!-- All JS Files -->
+    {% include 'partials/scripts.html' %}
+
+    {% block script %}
+    {% endblock script %}
 </body>
 
 </html>
