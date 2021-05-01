@@ -10,24 +10,24 @@ PERCEL_PRODUCT_TYPE = (
     ('L', 'Liquid')
 )
 
+class User(AbstractUser):
+    # pass
+    is_admin = models.BooleanField(default=True, blank=True, null=True)
+
 class Merchant(models.Model):
-    user = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
+    name = models.CharField(max_length=50, blank=True, null=True)
+    # user = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
     # username = models.CharField(max_length=100, unique=True)
     # user_type = models.CharField(max_length=50, null=True, blank=True)
     photo = models.ImageField(upload_to='photo/%Y%m/%d/', blank=True)
     created_at = models.DateTimeField(default=utils.timezone.now)
     updated_at = models.DateTimeField(auto_now=True)
 
-    # def as_json(self):
-    #     return dict(
-    #         username = self.username,
-    #         # user_type = self.user_type,
-    #         photo = self.photo,
-    #         created_at = self.created_at,
-    #         updated_at = self.updated_at
-    #     )
     class Meta:
         db_table = "merchant"
+
+    def __str__(self):
+        return self.name
 
 class Divisions(models.Model):
     name = models.CharField(max_length=50, blank=True, null=True)
