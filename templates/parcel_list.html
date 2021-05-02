@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<table class="table mt-3">
+    <thead class="table-dark">
+
+        <tr>
+            <th>
+                Merchant Name
+            </th>
+            <th>
+                Product Type
+            </th>
+            <th>
+                Weight
+            </th>
+            <th>
+                Address
+            </th>
+            <th>
+                District
+            </th>
+            <th>
+                Division
+            </th>
+
+        </tr>
+
+    </thead>
+    <tbody>
+        {% for parcel in parcels %}
+        <tr>
+            <td>
+                {{parcel.merchant_id}}
+            </td>
+            <td>
+                {{parcel.product_type}}
+            </td>
+            <td>
+                {{parcel.weight_in_gram}}
+            </td>
+            <td>
+                {{parcel.address}}
+            </td>
+            <td>
+                {{parcel.district_id}}
+            </td>
+            <td>
+                {{parcel.division_id}}
+            </td>
+        </tr>
+        {% empty %}
+
+        <p>There are currently no Parcel</p>
+
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock content %}

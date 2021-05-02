@@ -5,7 +5,9 @@ from core import views
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('', views.home_page, name="home_page"),
+    path('', views.parcel_list, name='parcel_list'),
+    path('get-districts/<int:divi_id>', views.districts_api),
+    # path('', views.home_page, name="home_page"),
     path('admin/', admin.site.urls),
     path('core/', include('core.urls'))
 ]

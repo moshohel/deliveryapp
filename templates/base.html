@@ -14,15 +14,19 @@
 </head>
 
 <body>
-    <!-- <h1>home page</h1> -->
+    <div class="container my-5">
+        <div class="row">
+            <!-- <h1>home page</h1> -->
+            {% include 'partials/navbar.html' %}
 
+            {% block content %}
+            {% endblock content %}
 
-    {% block content %}
-    {% endblock content %}
+            <!-- All JS Files -->
+            {% include 'partials/scripts.html' %}
 
-    <!-- All JS Files -->
-    {% include 'partials/scripts.html' %}
-
+        </div>
+    </div>
     {% block script %}
     {% endblock script %}
 </body>
