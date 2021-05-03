@@ -7,6 +7,9 @@
 
         <tr>
             <th>
+                id
+            </th>
+            <th>
                 Merchant Name
             </th>
             <th>
@@ -32,22 +35,25 @@
         {% for parcel in parcels %}
         <tr>
             <td>
-                {{parcel.merchant_id}}
+                {{parcel.id}}
+            </td>
+            <td>
+                {{parcel.merchant_name}}
             </td>
             <td>
                 {{parcel.product_type}}
             </td>
             <td>
-                {{parcel.weight_in_gram}}
+                {{parcel.weight}}
             </td>
             <td>
                 {{parcel.address}}
             </td>
             <td>
-                {{parcel.district_id}}
+                {{parcel.dist_name}}
             </td>
             <td>
-                {{parcel.division_id}}
+                {{parcel.divi_name}}
             </td>
         </tr>
         {% empty %}

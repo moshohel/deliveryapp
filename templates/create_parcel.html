@@ -1,82 +1,84 @@
-{% extends "base.html" %} {% load static %}
+{% extends "base.html" %}
+{% load widget_tweaks %}
+{% load static %}
 {% block content %}
 
 <h3>Create Parcel</h3>
+
+<span>{{ message }}</span>
+
 <form class="row g-3" action="/core/create_parcel" method="POST">
     {% csrf_token %}
 
-    <div class="col-md-4">
-        <label for="validationDefault01"
-            class="form-label">Merchant</label>
-        <select class="form-select" name="merchant"
-            id="validationDefault01" required>
-            <option selected disabled value="">
-                Select Merchant
-            </option>
-            {% for merchant in merchants %}
-            <option value="{{merchant.id}}">
-                {{merchant.name}}
-            </option>
+    <div class="col-4">
+        <div class="form-group">
+
+            {{ form.merchant.label_tag }}
+            {{ form.merchant | add_class:"form-control" }}
+            {% for error in form.merchant.errors %}
+            <p class="text-danger">{{ error }}</p>
             {% endfor %}
-        </select>
-    </div>
 
-    <div class="col-md-4">
-        <label for="validationDefault02" class="form-label">Product
-            Type</label>
-        <input type="text" class="form-control"
-            id="validationDefault02" placeholder="Product type"
-            name="product_type" required />
+        </div>
     </div>
+    <div class="col-4">
+        <div class="form-group">
 
-    <div class="col-md-4">
-        <label for="validationDefault02" class="form-label">Product
-            Weight</label>
-        <input type="text" class="form-control"
-            id="validationDefault03" placeholder="Product Weight"
-            name="weight_in_gram" required />
-    </div>
-
-    <div class="col-md-6">
-        <label for="validationDefault03"
-            class="form-label">Division</label>
-        <select class="form-select" name="division" id="division_id"
-            required>
-            <option selected disabled value="">
-                Select Division
-            </option>
-            {% for division in divisions %}
-            <option value="{{division.id}}">
-                {{division.name}}
-            </option>
+            {{ form.weight.label_tag }}
+            {{ form.weight | add_class:"form-control" }}
+            {% for error in form.weight.errors %}
+            <p class="text-danger">{{ error }}</p>
             {% endfor %}
-        </select>
+            <samp>1 KG 200 G -> 1.2</samp>
+        </div>
     </div>
+    <div class="col-4">
+        <div class="form-group">
 
-    <div class="col-md-6">
-        <label for="validationDefault04"
-            class="form-label">District</label>
-        <select class="form-select" name="district" id="district-area"
-            required>
-            <option selected disabled value="">
-                District
-            </option>
-            {% for district in districts %}
-            <option value="{{district.id}}">
-                {{district.name}}
-            </option>
+            {{ form.product_type.label_tag }}
+            {{ form.product_type | add_class:"form-control" }}
+            {% for error in form.product_type.errors %}
+            <p class="text-danger">{{ error }}</p>
             {% endfor %}
-        </select>
-    </div>
 
-    <div class="col-12">
-        <label for="validationDefault06"
-            class="form-label">Address</label>
-        <input type="text" class="form-control"
-            id="validationDefault03" placeholder="Address"
-            name="address" required />
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="form-group">
+
+            {{ form.district.label_tag }}
+            {{ form.district | add_class:"form-control" }}
+            {% for error in form.district.errors %}
+            <p class="text-danger">{{ error }}</p>
+            {% endfor %}
+
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="form-group">
+
+            {{ form.division.label_tag }}
+            {{ form.division | add_class:"form-control" }}
+            {% for error in form.division.errors %}
+            <p class="text-danger">{{ error }}</p>
+            {% endfor %}
+
+        </div>
     </div>
     <div class="col-12">
+        <div class="form-group">
+
+            {{ form.address.label_tag }}
+            {{ form.address | add_class:"form-control" }}
+            {% for error in form.address.errors %}
+            <p class="text-danger">{{ error }}</p>
+            {% endfor %}
+
+        </div>
+    </div>
+
+
+    <div class="d-grid gap-2 col-6 mx-auto">
         <button class="btn btn-primary" type="submit">
             Create Parcel
         </button>
@@ -94,10 +96,10 @@
 <!-- Districts respect to Division Using API -->
 <script>
     $(document).ready(function () {
-        $('#division_id').change(function () {
-            var division = $('#division_id').val();
+        $('#id_division').change(function () {
+            var division = $('#id_division').val();
             // Send an ajax request to server with this division
-            $('#district-area').html('');
+            $('#id_district').html('');
             var option = '';
             var url = '';
             $.get(
@@ -113,7 +115,7 @@
                             '</option>';
                     });
 
-                    $('#district-area').html(option);
+                    $('#id_district').html(option);
                 }
             );
         });

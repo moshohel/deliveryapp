@@ -45,7 +45,7 @@ class Districts(models.Model):
 class Parcel(models.Model):
     merchant = models.ForeignKey(Merchant, on_delete=models.CASCADE)
     product_type = models.CharField(choices=PERCEL_PRODUCT_TYPE, max_length=2)
-    weight_in_gram = models.IntegerField(default=500)
+    weight = models.FloatField(default=500)
     division = models.ForeignKey(Divisions, on_delete=models.DO_NOTHING)
     district = models.ForeignKey(Districts, on_delete=models.DO_NOTHING)
     address = models.CharField(max_length=200)
