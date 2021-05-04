@@ -58,7 +58,7 @@ ROOT_URLCONF = 'deliveryapp.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR , 'templates'],
+        'DIRS': [BASE_DIR, 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -85,8 +85,8 @@ DATABASES = {
         'NAME': 'deliveryapp',
         'USER': 'root',
         'PASSWORD': '',
-        'HOST':'localhost',
-        'PORT':'3306',
+        'HOST': 'localhost',
+        'PORT': '3306',
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
             'charset': 'utf8mb4',
@@ -137,7 +137,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
-STATIC_ROOT= os.path.join(BASE_DIR, 'static_root')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
 
 # media folder setting
 MEDIA_URL = '/media/'
@@ -145,3 +145,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')
 
 # Auth user
 AUTH_USER_MODEL = 'core.user'
+
+# Login & Redirect url
+LOGIN_URL = '/'
+LOGIN_REDIRECT_URL = '/'
