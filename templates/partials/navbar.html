@@ -12,18 +12,27 @@
 
 
             <div class="navbar-nav">
-                {% if request.user.is_authenticated %}
-                <a class="nav-link" href="/parcel_list">Parcel
+                {% if request.user.user_type == 'admin_user' %}
+                <a class="nav-link" href="/admin_user/createUser/">Create New
+                    Merchant</a>
+                <a class="nav-link" href="/admin_user/parcel_list">Parcel
                     List</a>
-                <a class="nav-link" href="/core/create_parcel">Create
+                <a class="nav-link" href="/admin_user/create_parcel">Create
                     Parcel</a>
                 <a class="nav-link"
                     href="{% url 'logout' %}">Logout</a>
                 {% endif %}
 
+                {% if request.user.user_type == 'merchant_user' %}
+
+                <a class="nav-link" href="/merchant/parcel_list/">Parcel
+                    List</a>
+                <a class="nav-link"
+                    href="{% url 'logout' %}">Logout</a>
+                {% endif %}
+
                 {% if not request.user.is_authenticated %}
-                <a class="nav-link" href="/parcel_list">Sign Up
-                </a>
+                    <a class="nav-link" href="#">Sign Up</a>
                 {% endif %}
             </div>
         </div>

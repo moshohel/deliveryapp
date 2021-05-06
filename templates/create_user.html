@@ -9,25 +9,14 @@
             <div class="card">
                 <div class="card-body p-5">
                     <h4 class="text-dark mb-5">
-                        Create User
+                        Create Merchant
                     </h4>
+                    <p class="text-danger">{{ message }}</p>
                     <form action="/admin_user/createUser/"
                         method="POST">
                         {% csrf_token %}
                         <div class="row">
-                            <!-- <div class="form-group col-md-12 mb-4">
-                                <h4 style="margin-bottom:10px;"><span
-                                        style="color:black;">Unit
-                                        Name</span></h4>
-                                <select name="unitname"
-                                    class="form-control">
 
-                                    {% for unit_name in UnitName %}
-                                    <option value="{{unit_name.id}}">
-                                        {{unit_name.name}} </option>
-                                    {% endfor %}
-                                </select>
-                            </div> -->
                             <div class="form-group col-md-12">
                                 {{ form.username.label_tag}}
                                 {{ form.username | add_class:"form-control" }}
@@ -73,7 +62,7 @@
                                 {% endfor %}
                             </div>
 
-                            <div class="form-group col-md-12 ">
+                            <div class="form-group col-md-12 mb-4">
                                 {{ form.photo.label_tag }}
                                 {{ form.photo | add_class:"form-control" }}
                                 {% for error in form.photo.errors %}
@@ -82,12 +71,12 @@
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <div class="d-inline-block mr-3"></div>
+                            <div class="d-inline-block mr-3 "></div>
                             <button type="submit"
                                 class="btn btn-lg btn-primary btn-block mb-4">
                                 Create
                             </button>
-                            <span>{{ message }}</span>
+
                         </div>
                     </form>
                 </div>

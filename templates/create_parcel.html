@@ -3,88 +3,112 @@
 {% load static %}
 {% block content %}
 
-<h3>Create Parcel</h3>
+<!-- <h3>Create Parcel</h3> -->
 
 <span>{{ message }}</span>
+<div
+    class="container d-flex flex-column justify-content-between vh-100">
+    <div class="row justify-content-center mt-5">
+        <div class="col-xl-5 col-lg-6 col-md-10">
+            <div class="card">
+                <div   div class="card-body p-5">
+                    <h4 class="text-dark mb-5">
+                        New Parcel
+                    </h4>
+                    <div class="row">
+                        <form action="/admin_user/create_parcel" method="POST">
+                        {% csrf_token %}
 
-<form class="row g-3" action="/core/create_parcel" method="POST">
-    {% csrf_token %}
+                            <div class="form-group col-md-12 mb-4">
 
-    <div class="col-4">
-        <div class="form-group">
+                                <h4 style= "margin-bottom:10px;" ><span style="color:black;" >Merchants :</span></h4>
+                                <select name="merchant" class="form-control" >
+                                {% for merchant in merchants %}
+                                    <option value="{{merchant.id}}" > {{merchant.first_name}} {{merchant.last_name}}</option>
+                                {% endfor %}
+                                </select>
 
-            {{ form.merchant.label_tag }}
-            {{ form.merchant | add_class:"form-control" }}
-            {% for error in form.merchant.errors %}
-            <p class="text-danger">{{ error }}</p>
-            {% endfor %}
+                            </div>
 
+
+                            <div class="form-group col-md-12 mb-4">
+
+                                {{ form.weight.label_tag }}
+                                {{ form.weight | add_class:"form-control" }}
+                                {% for error in form.weight.errors %}
+                                <p class="text-danger">{{ error }}</p>
+                                {% endfor %}
+                                <samp>1 KG 200 G -> 1.2</samp>
+                            </div>
+
+
+                            <div class="form-group col-md-12 mb-4">
+
+                                {{ form.product_type.label_tag }}
+                                {{ form.product_type | add_class:"form-control" }}
+                                {% for error in form.product_type.errors %}
+                                <p class="text-danger">{{ error }}</p>
+                                {% endfor %}
+
+                            </div>
+
+
+                            <div class="form-group col-md-12 mb-4">
+
+                                {{ form.division.label_tag }}
+                                {{ form.division | add_class:"form-control" }}
+                                {% for error in form.division.errors %}
+                                <p class="text-danger">{{ error }}</p>
+                                {% endfor %}
+
+                            </div>
+
+
+                            <div class="form-group col-md-12 mb-4">
+
+                                {{ form.district.label_tag }}
+                                {{ form.district | add_class:"form-control" }}
+                                {% for error in form.district.errors %}
+                                <p class="text-danger">{{ error }}</p>
+                                {% endfor %}
+
+                            </div>
+
+
+                            <div class="form-group col-md-12 mb-4">
+
+                                {{ form.address.label_tag }}
+                                {{ form.address | add_class:"form-control" }}
+                                {% for error in form.address.errors %}
+                                <p class="text-danger">{{ error }}</p>
+                                {% endfor %}
+
+                            </div>
+                            <div class="col-md-12 mb-4">
+                                <h3>Delivery Charge</h3>
+                                <P id="price"></P>
+                            </div>
+
+
+
+                            <div class="d-grid gap-2 col-6 mx-auto my-4">
+                                <button class="btn btn-primary" type="submit">
+                                    Create Parcel
+                                </button>
+                            </div>
+
+
+                        </div>
+
+                    </form>
+
+                    </div>
+
+                </div>
+            </div>
         </div>
     </div>
-    <div class="col-4">
-        <div class="form-group">
-
-            {{ form.weight.label_tag }}
-            {{ form.weight | add_class:"form-control" }}
-            {% for error in form.weight.errors %}
-            <p class="text-danger">{{ error }}</p>
-            {% endfor %}
-            <samp>1 KG 200 G -> 1.2</samp>
-        </div>
-    </div>
-    <div class="col-4">
-        <div class="form-group">
-
-            {{ form.product_type.label_tag }}
-            {{ form.product_type | add_class:"form-control" }}
-            {% for error in form.product_type.errors %}
-            <p class="text-danger">{{ error }}</p>
-            {% endfor %}
-
-        </div>
-    </div>
-    <div class="col-6">
-        <div class="form-group">
-
-            {{ form.district.label_tag }}
-            {{ form.district | add_class:"form-control" }}
-            {% for error in form.district.errors %}
-            <p class="text-danger">{{ error }}</p>
-            {% endfor %}
-
-        </div>
-    </div>
-    <div class="col-6">
-        <div class="form-group">
-
-            {{ form.division.label_tag }}
-            {{ form.division | add_class:"form-control" }}
-            {% for error in form.division.errors %}
-            <p class="text-danger">{{ error }}</p>
-            {% endfor %}
-
-        </div>
-    </div>
-    <div class="col-12">
-        <div class="form-group">
-
-            {{ form.address.label_tag }}
-            {{ form.address | add_class:"form-control" }}
-            {% for error in form.address.errors %}
-            <p class="text-danger">{{ error }}</p>
-            {% endfor %}
-
-        </div>
-    </div>
-
-
-    <div class="d-grid gap-2 col-6 mx-auto">
-        <button class="btn btn-primary" type="submit">
-            Create Parcel
-        </button>
-    </div>
-</form>
-
+</div>
 {% endblock content %}
 
 {% block script %}
@@ -96,8 +120,27 @@
 <!-- Districts respect to Division Using API -->
 <script>
     $(document).ready(function () {
+        let division
+        let district
+        var division_element = document.getElementById('id_division');
+        var district_element = document.getElementById('id_district');
+
         $('#id_division').change(function () {
-            var division = $('#id_division').val();
+            console.log(division_element.value)
+            division = $('#id_division').val();
+            district = $('#id_district').val();
+            if (district == '47' && division == '6')
+            {
+                console.log('dhaka district', district)
+            console.log('dhaka division', division)
+            }
+
+            else if (division == '6'){
+            console.log('dhaka division', division)
+
+            }
+            else
+            console.log('not dhaka')
             // Send an ajax request to server with this division
             $('#id_district').html('');
             var option = '';
@@ -118,8 +161,28 @@
                     $('#id_district').html(option);
                 }
             );
+
+
         });
+        $('#id_district').change(function () {
+            if (district == '47' && division == '6')
+            {
+                console.log('dhaka district', district)
+            console.log('dhaka division', division)
+            }
+
+            else if (division == '6'){
+            console.log('dhaka division', division)
+
+            }
+            else
+            console.log('not dhaka')
+
+            });
     });
+
+
+
 </script>
 
 {% endblock script %}

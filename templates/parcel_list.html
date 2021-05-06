@@ -7,7 +7,7 @@
 
         <tr>
             <th>
-                id
+                InVoice Id
             </th>
             <th>
                 Merchant Name
@@ -17,6 +17,12 @@
             </th>
             <th>
                 Weight
+            </th>
+            <th>
+                Delivery Charge
+            </th>
+            <th>
+                Returning Charge
             </th>
             <th>
                 Address
@@ -35,16 +41,22 @@
         {% for parcel in parcels %}
         <tr>
             <td>
-                {{parcel.id}}
+                {{parcel.invoice_no}}
             </td>
             <td>
-                {{parcel.merchant_name}}
+                {{parcel.merchant_first_name}} {{parcel.merchant_last_name}}
             </td>
             <td>
                 {{parcel.product_type}}
             </td>
             <td>
                 {{parcel.weight}}
+            </td>
+            <td>
+                {{parcel.price}}
+            </td>
+            <td>
+                {{parcel.return_charge}}
             </td>
             <td>
                 {{parcel.address}}

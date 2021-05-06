@@ -7,8 +7,16 @@ from django.shortcuts import redirect, render
 from core.models import User
 from utilities.user_types_value import user_types
 
+# User Sign in function
+
 
 def login_auth(request):
+    # Check User is already singed in
+    if request.user.is_authenticated and request.user.user_type == 'admin_user':
+        return redirect('/admin_user/parcel_list')
+    elif request.user.is_authenticated and request.user.user_type == 'merchant_user':
+        return redirect('/merchant/parcel_list')
+    # Validated user credentials and redirect
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -17,13 +25,14 @@ def login_auth(request):
             if user is not None:
                 login(request, user)
                 userType = user.user_type
+                # Value Store in Session
                 request.session["user_id"] = user.id
                 request.session["user_type"] = userType
                 request.session["name"] = user.first_name + \
                     " " + user.last_name
                 is_staff = user.is_staff
                 if (userType == user_types().admin):
-                    return redirect('/admin_user/createUser/')
+                    return redirect('/admin_user/parcel_list/')
 
                 elif(userType == user_types().merchant):
                     return redirect('/merchant/parcel_list')
@@ -46,6 +55,9 @@ def login_auth(request):
             'errorMsg': ""
         }
         return render(request, 'login.html', context)
+
+
+# User Sign Out function
 
 
 def logout_view(request):
