@@ -84,11 +84,12 @@
                                 {% endfor %}
 
                             </div>
-                            <div class="col-md-12 mb-4">
-                                <h3>Delivery Charge</h3>
-                                <P id="price"></P>
-                            </div>
 
+
+                            <div class="col-md-12 mb-4 d-flex">
+                                <h4>Delivery Charge -  </h4>
+                                <h4 id="parcel_price"></h4>
+                            </div>
 
 
                             <div class="d-grid gap-2 col-6 mx-auto my-4">
@@ -122,25 +123,55 @@
     $(document).ready(function () {
         let division
         let district
-        var division_element = document.getElementById('id_division');
-        var district_element = document.getElementById('id_district');
+        let weight
+        var price_element = document.getElementById('parcel_price');
 
         $('#id_division').change(function () {
-            console.log(division_element.value)
+            // Price Calculation on division change
+            weight = $('#id_weight').val();
             division = $('#id_division').val();
             district = $('#id_district').val();
+            let price = 0
             if (district == '47' && division == '6')
             {
-                console.log('dhaka district', district)
-            console.log('dhaka division', division)
+                if (weight < 2) {
+                    price = 60
+                }
+                else{
+                    price = (((weight-2)*10)+60)
+                }
             }
 
             else if (division == '6'){
-            console.log('dhaka division', division)
+                if (weight < 2){
+                    price = 110
+                    cod = price*0.01
+                    price += cod
+                }
+                else{
+                    price = ((weight-2)*20)+110
+                    cod = (((weight-2)*20)+110)*0.01
+                    price += cod
+                }
 
             }
-            else
-            console.log('not dhaka')
+            else{
+                console.log('district change not dhaka')
+                if (weight < 2){
+                    price = 130
+                    cod = price*0.01
+                    price += cod
+
+                }
+                else{
+                    price = ((weight-2)*20)+130
+                    cod = (((weight-2)*20)+130)*0.01
+                    price += cod
+                }
+            }
+
+            price_element.innerText = price
+
             // Send an ajax request to server with this division
             $('#id_district').html('');
             var option = '';
@@ -164,19 +195,101 @@
 
 
         });
+
+        // Price Calculation on district change
         $('#id_district').change(function () {
+            weight = $('#id_weight').val();
+            division = $('#id_division').val();
+            district = $('#id_district').val();
+            let price = 0
             if (district == '47' && division == '6')
             {
-                console.log('dhaka district', district)
-            console.log('dhaka division', division)
+                if (weight < 2) {
+                    price = 60
+                }
+                else{
+                    price = (((weight-2)*10)+60)
+                }
+                console.log('price', price)
             }
 
             else if (division == '6'){
-            console.log('dhaka division', division)
+                if (weight < 2){
+                    price = 110
+                    cod = price*0.01
+                    price += cod
+                }
+                else{
+                    price = ((weight-2)*20)+110
+                    cod = (((weight-2)*20)+110)*0.01
+                    price += cod
+                }
+                console.log('price', price)
 
             }
-            else
-            console.log('not dhaka')
+            else{
+                if (weight < 2){
+                    price = 130
+                    cod = price*0.01
+                    price += cod
+
+                }
+                else{
+                    price = ((weight-2)*20)+130
+                    cod = (((weight-2)*20)+130)*0.01
+                    price += cod
+                }
+            }
+
+            price_element.innerText = price
+
+            });
+
+        // Price Calculation on weight change
+        $('#id_weight').change(function () {
+            weight = $('#id_weight').val();
+            division = $('#id_division').val();
+            district = $('#id_district').val();
+            let price = 0
+            if (district == '47' && division == '6')
+            {
+                if (weight < 2) {
+                    price = 60
+                }
+                else{
+                    price = (((weight-2)*10)+60)
+                }
+                console.log('price', price)
+            }
+
+            else if (division == '6'){
+                if (weight < 2){
+                    price = 110
+                    cod = price*0.01
+                    price += cod
+                }
+                else{
+                    price = ((weight-2)*20)+110
+                    cod = (((weight-2)*20)+110)*0.01
+                    price += cod
+                }
+
+            }
+            else{
+                if (weight < 2){
+                    price = 130
+                    cod = price*0.01
+                    price += cod
+
+                }
+                else{
+                    price = ((weight-2)*20)+130
+                    cod = (((weight-2)*20)+130)*0.01
+                    price += cod
+                }
+            }
+
+            price_element.innerText = price
 
             });
     });

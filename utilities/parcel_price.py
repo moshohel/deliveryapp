@@ -25,6 +25,8 @@ class Parcel_price:
         elif districtObj.division.name == 'Dhaka':
             if self.weight < 2:
                 price = 110
+                cod = price*0.01
+                price += cod
                 return_charge = price/2
                 return price, return_charge
 
@@ -37,6 +39,8 @@ class Parcel_price:
         else:
             if self.weight < 2:
                 price = 130
+                cod = price*0.01
+                price += cod
                 return_charge = price/2
                 return price, return_charge
             else:
