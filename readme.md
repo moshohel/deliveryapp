@@ -7,7 +7,7 @@ Create a parcel delivery software.
 -   Django
 -   MySQL
 
-**URL: https://.herokuapp.com**
+**URL: https://moshohel-delivary.herokuapp.com/ **
 
 #### User Types
 
