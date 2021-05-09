@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Third Party
     'widget_tweaks',
+    'django_extensions',
     # Local apps
     'core',
 ]
@@ -93,6 +94,7 @@ DATABASES = {
         }
     }
 }
+
 
 # Setting DEFAULT_AUTO_FIELD for Database (primary key)
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'

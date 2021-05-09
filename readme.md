@@ -7,12 +7,15 @@ Create a parcel delivery software.
 -   Django
 -   MySQL
 
-**URL: https://.herokuapp.com**
+**URL: https://moshohel-delivary.herokuapp.com**
+
+### Website is not working cause MySQL App needs ClearDB MySQL Add-ons Which is not for unverified(Free) Users.
 
 #### User Types
 
 -   Admin
 -   Merchant
+-   Super User
 
 #### URL For Admin
 
@@ -55,3 +58,26 @@ Create a parcel delivery software.
 
 -   List of Parcel of that Marchant
     -   endpoint: \_/merchant/parcel_list
+
+#### Super User is responsible to mantain Application
+
+-   Login URL for Super User
+    -   endpoint: \_/admin
+
+### Project Set Process
+
+-   Download the project
+-   Create Virtual Environment in project directory
+-   Activate Environment
+-   Run Command -
+
+```json
+pip install -r requirements.txt
+```
+
+-   If MySQL Client is not Installed Please Download MySQL Client and installed it
+-   Run Command -
+
+```
+python manage.py runserver
+```
