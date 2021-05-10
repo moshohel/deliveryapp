@@ -9,6 +9,18 @@ Create a parcel delivery software.
 
 **URL: http://raahinn.pythonanywhere.com/ **
 
+## Steps to run the project-
+
+-   Clone or Download the project.
+    -   Create a Virtual Environment on the project repository & activate it.
+
+#### Run Command -
+
+```json
+pip install -r requirements.txt
+python manage.py runserver
+```
+
 #### User Types
 
 -   Admin
