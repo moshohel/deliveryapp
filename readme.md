@@ -7,9 +7,7 @@ Create a parcel delivery software.
 -   Django
 -   MySQL
 
-**URL: https://moshohel-delivary.herokuapp.com/ **
-
-### ### Website is not working cause MySQL App needs ClearDB MySQL Add-ons on Heroku Which is not for unverified(Free) Users.
+**URL: http://raahinn.pythonanywhere.com/ **
 
 #### User Types
 
