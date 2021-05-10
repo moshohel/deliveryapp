@@ -3,9 +3,9 @@ autopep8==1.5.7
 Django==3.2
 django-extensions==3.1.3
 django-widget-tweaks==1.4.8
-mysqlclient @ file:///S:/mysqlclient-1.4.6-cp38-cp38-win32.whl
 Pillow==8.2.0
 pycodestyle==2.7.0
 pytz==2021.1
 sqlparse==0.4.1
 toml==0.10.2
+mysqlclient
