@@ -31,9 +31,6 @@
                     href="{% url 'logout' %}">Logout</a>
                 {% endif %}
 
-                {% if not request.user.is_authenticated %}
-                    <a class="nav-link" href="#">Sign Up</a>
-                {% endif %}
             </div>
         </div>
     </div>

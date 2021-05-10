@@ -75,3 +75,15 @@ python manage.py runserver
 
 -   Login route
     -   endpoint: \_/admin
+
+## For login use -
+
+-   Admin user
+    -   username: admin
+    -   password: 123
+-   Merchant user
+    -   username: stylezpne
+    -   password: 123
+-   Super User
+    -   username: superuser
+    -   password: 123

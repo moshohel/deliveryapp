@@ -141,7 +141,7 @@ def merchant_parcel_list(request):
     context = {
         "parcels": parcels
     }
-    return render(request, "templates\merchant\parcel_list.html", context)
+    return render(request, "templates/merchant/parcel_list.html", context)
 
 
 # Return Districts respect to Division
