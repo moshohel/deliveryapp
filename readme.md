@@ -82,7 +82,7 @@ python manage.py runserver
     -   username: admin
     -   password: 123
 -   Merchant user
-    -   username: stylezpne
+    -   username: stylezone
     -   password: 123
 -   Super User
     -   username: superuser
