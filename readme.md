@@ -9,10 +9,13 @@ Create a parcel delivery software.
 
 **URL: https://moshohel-delivary.herokuapp.com/ **
 
+### ### Website is not working cause MySQL App needs ClearDB MySQL Add-ons on Heroku Which is not for unverified(Free) Users.
+
 #### User Types
 
 -   Admin
 -   Merchant
+-   Super User
 
 #### URL For Admin
 
@@ -55,3 +58,10 @@ Create a parcel delivery software.
 
 -   List of Parcel of that Marchant
     -   endpoint: \_/merchant/parcel_list
+
+### Super user
+
+#### Users who have all the authorizations & permissions to maintain the applications
+
+-   Login route
+    -   endpoint: \_/admin
