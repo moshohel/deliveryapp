@@ -1,4 +1,4 @@
-# Programming Task - Qtec Solution Limited
+# Programming Task
 
 Create a parcel delivery software.
 
